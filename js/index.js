@@ -3,9 +3,9 @@ window.onload = function() {
     displayStores();
 }
 
-var map;
-      var markers = [];
-      var infoWindow;
+    var map;
+    var markers = [];
+    var infoWindow;
 
 function initMap() {
     var losAngeles = {
@@ -54,18 +54,43 @@ function showStoreMarkers(){
         var latlng = new google.maps.LatLng(
             store["coordinates"]["latitude"],
             store["coordinates"]["longitude"]);
+        var openStatusText = store["openStatusText"];
+        var phoneNumber = store["phoneNumber"];
             bounds.extend(latlng);
-        createMarker(latlng, name, address, ++index);
+        createMarker(latlng, name, phoneNumber, openStatusText, address, ++index);
     }
     map.fitBounds(bounds);
 }
 
-function createMarker(latlng, name, address, index){
-    var html = "<b>" + name + "</b> <br/>" + address;
+function createMarker(latlng, name, phoneNumber,openStatusText, address, index){
+    var coffeeMug = `<i id="coffeeIcon" class="fad fa-coffee-togo"></i>`;
+    var html = `
+    <div class="store-info-window">
+            <div class="store-info-name">
+                ${name}
+            </div>
+            <div class="store-info-status">
+                ${openStatusText}
+            </div>
+            <div class="store-info-address">
+                <div class="circle">
+                    <i class="fas fa-location-arrow"></i>
+                </div>
+                ${address}
+            </div>
+            <div class="store-info-phone">
+                <div class="circle">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                ${phoneNumber}
+            </div>
+        </div>
+    `;
           var marker = new google.maps.Marker({
             map: map,
             position: latlng,
             label: index.toString()
+            // icon: coffeeMug
           });
           google.maps.event.addListener(marker, 'click', function() {
             infoWindow.setContent(html);
