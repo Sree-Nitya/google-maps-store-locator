@@ -9,6 +9,8 @@
 - Add individual store container
 
 
-- Display real world store data
-- Info window for every single store marker
-- Create engaging user experience to highlight the store on its selection
+- Style the individual store item in the store list
+- Show all the stores in the stores list based on real data
+- show the marker based on real world store data
+- Show the info window when you click on the individual store
+- Add a transition on hover of the individual store

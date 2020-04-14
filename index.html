@@ -2,12 +2,12 @@
 <html>
     <head> 
         <title>Google Maps project</title>
+        <script src="js/store-data.js"></script>
         <script src="js/index.js"></script>
         <link rel="stylesheet" href="style/style.css">
         <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
     </head>
     <body>
-
         <div class="title">Store Location</div>
         <div class="search-container">
             <div class="search">
@@ -18,19 +18,22 @@
         <div class="stores-list-container">
             <div class="stores-list">
                 <div class="store-container">
-                    <div class="store-address">
-                        
-                    </div>
-                    <div class="store-phone-number">
-
+                    <div class="store-info-container">
+                        <div class="store-address">
+                        <span>8480 Beverley hills</span>
+                        <span>Hyderabad, 50089</span>
+                        </div>
+                        <div class="store-phone-number">999-999-9999</div>
+                        <div class="store-number-container">
+                            <div class="store-number">1</div>
+                        </div>
                     </div>
                 </div>
-                
             </div>
         </div>
         <div id="map"></div>
         <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcwazb-T7zvceyA4VLWVB-eXvwj-XEUIA&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
         </script>
     </body>
 </html>

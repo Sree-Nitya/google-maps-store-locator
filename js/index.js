@@ -1,12 +1,75 @@
 
+window.onload = function() {
+    displayStores();
+}
+
+var map;
+      var markers = [];
+      var infoWindow;
+
 function initMap() {
-    var india = {
-        lat: 17.471757, 
-        lng: 78.5478227
+    var losAngeles = {
+        // lat: 17.471757, 
+        // lng: 78.5478227
+        lat: 34.052235,
+        lng: -118.243683
     };
     map = new google.maps.Map(document.getElementById('map'), {
-        center: india,
+        center: losAngeles,
         zoom: 11,
         mapTypeId: 'roadmap',
     });
+    infoWindow = new google.maps.InfoWindow();
+    showStoreMarkers();
+}
+
+function displayStores(){
+    var storesHtml = '';
+    for(var [index,store] of stores.entries()){
+        var address = store['addressLines'];
+        var phone = store['phoneNumber'];
+        storesHtml += `
+        <div class="store-container">
+            <div class="store-info-container">
+            <div class="store-address">
+            <span>${address[0]}</span>
+            <span>${address[1]}</span>
+            </div>
+            <div class="store-phone-number">${phone}</div>
+            <div class="store-number-container">
+                <div class="store-number">${++index}</div>
+            </div>
+            </div>
+        </div>
+        `
+        document.querySelector('.stores-list').innerHTML = storesHtml;
+    }
+}
+
+function showStoreMarkers(){
+    var bounds = new google.maps.LatLngBounds();
+    for(var [index,store] of stores.entries()){
+        var name = store['name'];
+        var address = store["addressLines"][0];
+        var latlng = new google.maps.LatLng(
+            store["coordinates"]["latitude"],
+            store["coordinates"]["longitude"]);
+            bounds.extend(latlng);
+        createMarker(latlng, name, address, ++index);
+    }
+    map.fitBounds(bounds);
+}
+
+function createMarker(latlng, name, address, index){
+    var html = "<b>" + name + "</b> <br/>" + address;
+          var marker = new google.maps.Marker({
+            map: map,
+            position: latlng,
+            label: index.toString()
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infoWindow.setContent(html);
+            infoWindow.open(map, marker);
+          });
+          markers.push(marker);
 }

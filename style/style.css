@@ -12,19 +12,17 @@ body {
 }
 
 .title {
-    font-family: Arial, Helvetica, sans-serif;
     position: absolute;
 z-index: 100;
 font-size: 45px;
-font-style: inherit;
+font-weight: bold;
 color: #333;
 text-transform: uppercase;
-top: 150px;
+top: 100px;
 left: 100px;
 }
 
 .search-container{
-    font-family: Arial, Helvetica, sans-serif;
 position: absolute;
 z-index: 100;
 top: 230px;
@@ -42,30 +40,87 @@ font-size: 25px;
 background-color: transparent;
 border: none;
 left: 30px;
+color: white;
 }
+
 .search-container input:focus{
     outline: none;
 }
 
-.search{
-    font-family: Arial, Helvetica, sans-serif;
+.search-container .search{
 flex-grow: 1;
 display: flex;
 align-items: center;
-padding-left: 50px;
+padding-left: 20px;
     padding-right: 20px;
+    
+}
+
+.search i{
+    font-size: 25px;
     color: white;
 }
 
 .stores-list-container{
-    font-family: Arial, Helvetica, sans-serif;
-width: 400px;
-height: 400px;
-position: absolute;
-z-index: 100;
-background-color: white;
-left: 100px;
-top: 320px;
-border-radius: 30px;
-bottom: 20px;
+    width: 400px;
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    left: 100px;
+    top: 320px;
+    border-radius: 30px;
+    bottom: 20px;
+    display: flex;
+    overflow-y: hidden;
+    padding-bottom: 30px;
+    
+}
+
+.stores-list{
+    flex-grow: 1;
+    overflow-y: scroll;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.store-container{
+    border-bottom: 1px solid #979797;
+    display: flex;
+    cursor: pointer;
+}
+
+.store-info-container{
+    flex-grow: 1;
+}
+
+.store-address{
+    font-size: 21px;
+    color: #514c4c;
+    margin-top: 30px;
+}
+.store-address span{
+    display: block;
+}
+
+.store-phone-number{
+    color: #b5adad;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.store-number-container{
+justify-content: center;
+display: flex;
+align-items: center;
+}
+
+.store-number{
+    width: 30px;
+    height: 30px;
+    background-color: #454e53;
+    color: #b5adad;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
